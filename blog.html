@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timefy - Manage your time, reclaim your focus.</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <meta name="description"
+        content="Take control of your screen time with our app. Manage your time effectively and stay productive." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animate.css">
+</head>
+
+<body>
+    <div class="bg-white oncemore">
+        <header class="fixed inset-x-0 top-0 z-50 border-b border-gray-300 bg-white">
+            <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+                <div class="flex lg:flex-1">
+                    <a href="index.html" class="-m-1.5 p-1.5">
+                        <span class="font-bold text-xl">Timefy</span>
+                    </a>
+                </div>
+                <!-- <div class="flex lg:hidden">
+                        <button type="button"
+                            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-900 cursor-pointer">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                aria-hidden="true" data-slot="icon">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                        </button>
+                    </div> -->
+                <div class="hidden lg:flex lg:gap-x-12">
+                    <a href="index.html" class="text-sm/6 font-semibold text-gray-900">Home</a>
+                    <a href="about.html" class="text-sm/6 font-semibold text-gray-900">About Us</a>
+                    <a href="features.html" class="text-sm/6 font-semibold text-gray-900">Features</a>
+                    <a href="contactus.html" class="text-sm/6 font-semibold text-gray-900">Contact Us</a>
+                    <a href="blog.html" class="text-sm/6 font-semibold text-gray-900">Blogs</a>
+                </div>
+                <div class="lg:flex lg:flex-1 lg:justify-end text-2xl">
+                    <span class="text-sm/6 font-semibold text-2xl text-gray-900 cursor-pointer">
+                        <i class="bi bi-brightness-high" id="mode"></i>
+                    </span>
+                </div>
+                <button id="open" type="button"
+                    class="lg:hidden -m-2.5 rounded-md p-2.5 text-gray-900 font-bold text-2xl cursor-pointer">
+                    <span class="sr-only">Open menu</span>
+                    <i class="bi bi-list text-2xl font-semibold"></i>
+                </button>
+            </nav>
+            <!-- Mobile menu, show/hide based on menu open state. -->
+
+            <div class="lg:hidden" id="menu" role="dialog" aria-modal="true">
+                <!-- Background backdrop, show/hide based on slide-over state. -->
+                <div class="fixed inset-0 z-50"></div>
+                <div
+                    class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                    <div class="flex items-center justify-between">
+                        <a href="index.html" class="-m-1.5 p-1.5">
+                            <span class="font-bold text-xl">Timefy</span>
+                        </a>
+                        <button id="close" type="button"
+                            class="-m-2.5 rounded-md p-2.5 text-gray-900 font-bold text-2xl cursor-pointer">
+                            <span class="sr-only">Close menu</span>
+                            <i class="bi bi-x"></i>
+                        </button>
+                    </div>
+                    <div class="mt-6 flow-root">
+                        <div class="-my-6 divide-y divide-gray-500/10">
+                            <div class="space-y-2 py-6">
+                                <a href="index.html"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-indigo-400">Home
+                                    Us</a>
+                                <a href="about.html"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-indigo-400">About
+                                    Us</a>
+                                <a href="features.html"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-indigo-400">Features</a>
+                                <a href="contactus.html"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-indigo-400">Contact
+                                    Us</a>
+                                <a href="blog.html"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-indigo-400">Blogs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!--  Hero section  -->
+        <div class="py-24 sm:py-32">
+            <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+                <h2 class="text-center text-base/7 font-semibold text-indigo-600 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 ">Our Blog</h2>
+                <section class="bg-white dark:bg-gray-900">
+                    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+                        <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
+                            <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">We use an agile approach to test
+assumptions and connect with the needs of your audience early and often.</p>
+                        </div>
+                        <div class="grid gap-8 lg:grid-cols-2">
+                            <article
+                                class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                                <div class="flex justify-between items-center mb-5 text-gray-500">
+                                    <span
+                                        class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+                                        <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z">
+                                            </path>
+                                        </svg>
+                                        Tutorial
+                                    </span>
+                                    <span class="text-sm">14 days ago</span>
+                                </div>
+                                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a
+                                        href="#">How Screen Time Apps Help You Manage Your Digital Life?</a></h2>
+                                <p class="mb-5 font-light text-gray-500 dark:text-gray-400">Managing screen time has become essential in the digital age. Screen time tracking apps offer insights into how much
+                                time you spend on your device each day. They allow you to set usage limits for different apps, encouraging healthier
+                                habits. With detailed analytics, these apps can help you strike a balance between productivity and leisure.</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center space-x-4">
+                                        <img class="w-7 h-7 rounded-full"
+                                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
+                                            alt="Jese Leos avatar" />
+                                        <span class="font-medium dark:text-white">
+                                            Jese Leos
+                                        </span>
+                                    </div>
+                                    <a href="#"
+                                        class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
+                                        Read more
+                                        <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </article>
+                            <article
+                                class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                                <div class="flex justify-between items-center mb-5 text-gray-500">
+                                    <span
+                                        class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+                                        <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
+                                                clip-rule="evenodd"></path>
+                                            <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
+                                        </svg>
+                                        Article
+                                    </span>
+                                    <span class="text-sm">14 days ago</span>
+                                </div>
+                                <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a
+                                        href="#">The Power of Analytics: Understanding Your App Usage Patterns</a></h2>
+                                <p class="mb-5 font-light text-gray-500 dark:text-gray-400">Tracking app usage gives you a deeper understanding of your habits. App usage analytics show which apps you use most and
+                                at what times of day. This data helps you identify patterns and make informed decisions on how to reduce unnecessary
+                                screen time. By using this information, you can create a healthier digital routine and boost productivity.</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center space-x-4">
+                                        <img class="w-7 h-7 rounded-full"
+                                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
+                                            alt="Bonnie Green avatar" />
+                                        <span class="font-medium dark:text-white">
+                                            Bonnie Green
+                                        </span>
+                                    </div>
+                                    <a href="#"
+                                        class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
+                                        Read more
+                                        <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white rounded-lg shadow dark:bg-gray-900">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+            <div class="sm:flex sm:items-center sm:justify-between">
+                <a href="index.html" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                    <span class="self-center text-2xl font-bold whitespace-nowrap dark:text-white">Timefy</span>
+                </a>
+                <ul
+                    class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                    <li class="px-2 md:px-6">
+                        <a href="about.html" class="hover:underline me-4 md:me-6">About</a>
+                    </li>
+                    <li class="px-2 md:px-6">
+                        <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                    </li>
+                    <li class="px-2 md:px-6">
+                        <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                    </li>
+                    <li class="md:px-6 px-2">
+                        <a href="contactus.html" class="hover:underline">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="index.html"
+                    class="hover:underline">Timefy™</a>. All Rights Reserved.</span>
+        </div>
+    </footer>
+    </div>
+</body>
+
+</html>
+<script>
+    // JavaScript for Sidebar Toggle
+    const menuButton = document.getElementById('menu');
+    const closeButton = document.getElementById('close');
+    const openButton = document.getElementById('open');
+    const mobileMenu = document.getElementById('menu');
+
+    openButton.addEventListener('click', () => {
+        mobileMenu.style.display = 'block';
+    });
+
+    closeButton.addEventListener('click', () => {
+        mobileMenu.style.display = 'none';
+    });
+
+    // JavaScript for Dark/Light Mode Toggle
+    const modeToggleButton = document.getElementById('mode');
+    const iconClassElements = document.querySelectorAll('.iconClass'); // Select all elements with the class "iconClass"
+
+    modeToggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+
+        // Change mode toggle icon
+        const iconClass = document.body.classList.contains('dark')
+            ? 'bi-moon-stars'
+            : 'bi-brightness-high';
+        modeToggleButton.className = `bi ${iconClass}`;
+
+        // Update iconClass elements with 'text-white' in dark mode
+        iconClassElements.forEach((icon) => {
+            if (document.body.classList.contains('dark')) {
+                icon.classList.add('text-white');
+            } else {
+                icon.classList.remove('text-white');
+            }
+        });
+    });
+</script>

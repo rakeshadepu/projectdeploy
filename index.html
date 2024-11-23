@@ -1,26 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Timefy - Manage your time, reclaim your focus.</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <meta name="description" content="Take control of your screen time with our app. Manage your time effectively and stay productive.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="bg-white">
-        <header class="fixed inset-x-0 top-0 z-50 border-b border-gray-300 bg-white">
-            <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-                <div class="flex lg:flex-1">
-                    <a href="#" class="-m-1.5 p-1.5">
-                        <span class="font-bold text-xl">Timefy</span>
-                    </a>
-                </div>
-                <div class="flex lg:hidden">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <meta
+      name="description"
+      content="Take control of your screen time with our app. Manage your time effectively and stay productive."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animate.css">
+  </head>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const downloadButton = document.getElementById("Download");
+        const subscribeButton = document.getElementById("subscribe");
+        const entirebody = document.getElementsByClassName('oncemore'); // HTMLCollection
+        const toast = document.getElementById("toast-default");
+        const toastSubscribe = document.getElementById('toast-subscribe');
+        const closeToast = document.getElementById('closeToast'); // Close button
+        const closeSubscribe = document.getElementById('closeSubscribe'); // Fixed typo
+
+        // Show toast and blur background
+        downloadButton.addEventListener("click", () => {
+          toast.classList.remove("hidden");
+          toast.classList.add("block");
+
+          // Loop through the collection and add the 'blurred' class
+          for (let i = 0; i < entirebody.length; i++) {
+            entirebody[i].classList.add("blurred");
+          }
+        });
+
+        // Close toast and remove blur
+        closeToast.addEventListener("click", () => {
+          toast.classList.add("hidden");
+          toast.classList.remove("block");
+
+          // Remove the 'blurred' class from all elements in the collection
+          for (let i = 0; i < entirebody.length; i++) {
+            entirebody[i].classList.remove("blurred");
+          }
+        });
+
+        // Close toast and remove blur for the subscribe toast
+        closeSubscribe.addEventListener("click", () => { // Correct variable
+          toastSubscribe.classList.add("hidden"); // Updated to affect the subscribe toast
+          toastSubscribe.classList.remove("block");
+
+          // Remove the 'blurred' class from all elements in the collection
+          for (let i = 0; i < entirebody.length; i++) {
+            entirebody[i].classList.remove("blurred");
+          }
+        });
+      });
+
+  </script>
+  <body class="h-100%">
+    <script>
+
+      $(window).on('load', function () {
+        $('body').toggleClass('loading-done');
+
+        setTimeout(function () {
+          $(".ringee").addClass("spin");
+        }, 5500);
+
+      });
+    </script>
+    <!-- toast -->
+    <div id="toast-default"
+      class="z-999 flex hidden items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 justify-between">
+      <div
+        class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg dark:bg-blue-800 dark:text-blue-200">
+        <i class="bi bi-check-circle text-success"></i>
+        <span class="sr-only">Fire icon</span>
+      </div>
+      <div class="ms-3 text-sm font-normal">Download Successfully</div>
+      <button type="button" id="closeToast"
+        class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+        aria-label="Close">
+        <span class="sr-only">Close</span>
+        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+        </svg>
+      </button>
+    </div>
+    <!-- Toast Subscribe -->
+    <div id="toast-subscribe"
+      class="z-999 flex hidden items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 justify-between">
+      <div
+        class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg dark:bg-blue-800 dark:text-blue-200">
+        <i class="bi bi-check-circle text-success"></i>
+        <span class="sr-only">Fire icon</span>
+      </div>
+      <div class="ms-3 text-sm font-normal">Subscribed Successfully</div>
+      <button type="button" id="closeSubscribe"
+        class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+        aria-label="Close">
+        <span class="sr-only">Close</span>
+        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+        </svg>
+      </button>
+    </div>
+    <!-- BODY -->
+    <div class="bg-white oncemore">
+      <header class="fixed inset-x-0 top-0 z-50 border-b border-gray-300 bg-white">
+        <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global" >
+          <div class="flex lg:flex-1">
+            <a href="index.html" class="-m-1.5 p-1.5">
+              <span class="font-bold text-xl">Timefy</span>
+            </a>
+          </div>
+          <!-- <div class="flex lg:hidden">
+            
                     <button type="button"
                         class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-900 cursor-pointer">
                         <span class="sr-only">Open main menu</span>
@@ -30,121 +137,452 @@
                                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>
                     </button>
-                </div>
-                <div class="hidden lg:flex lg:gap-x-12">
-                    <a href="#" class="text-sm/6 font-semibold text-gray-900">Product</a>
-                    <a href="#" class="text-sm/6 font-semibold text-gray-900">Features</a>
-                    <a href="#" class="text-sm/6 font-semibold text-gray-900">Marketplace</a>
-                    <a href="#" class="text-sm/6 font-semibold text-gray-900">Company</a>
-                    
-                </div>
-                <div class="lg:flex lg:flex-1 lg:justify-end text-2xl">
-                    <span class="text-sm/6 font-semibold text-2xl text-gray-900 cursor-pointer">
-                        <i class="bi bi-brightness-high" id="mode"></i>
-                    </span>
-                </div>
-                <button id="open" type="button" class="lg:hidden -m-2.5 rounded-md p-2.5 text-gray-900 font-bold text-2xl cursor-pointer">
-                    <span class="sr-only">Open menu</span>
-                    <i class="bi bi-list text-2xl font-semibold"></i>
-                </button>
-            </nav>
-            <!-- Mobile menu, show/hide based on menu open state. -->
+                </div> -->
+          <div class="hidden lg:flex lg:gap-x-12">
+            <a href="index.html" class="text-sm/6 font-semibold text-gray-900">Home</a>
+            <a href="about.html" class="text-sm/6 font-semibold text-gray-900"
+              >About Us</a
+            >
+            <a
+              href="features.html"
+              class="text-sm/6 font-semibold text-gray-900"
+              >Features</a
+            >
+            <a
+              href="contactus.html"
+              class="text-sm/6 font-semibold text-gray-900"
+              >Contact Us</a
+            >
+            <a href="blog.html" class="text-sm/6 font-semibold text-gray-900"
+              >Blogs</a
+            >
+          </div>
+          <div class="lg:flex lg:flex-1 lg:justify-end text-2xl">
+            <span
+              class="text-sm/6 font-semibold text-2xl text-gray-900 cursor-pointer">
+              <i class="bi bi-brightness-high" id="mode"></i>
+            </span>
+          </div>
+          <button
+            id="open"
+            type="button"
+            class="lg:hidden -m-2.5 rounded-md p-2.5 text-gray-900 font-bold text-2xl cursor-pointer"
+          >
+            <span class="sr-only">Open menu</span>
+            <i class="bi bi-list text-2xl font-semibold"></i>
+          </button>
+        </nav>
+        <!-- Mobile menu, show/hide based on menu open state. -->
 
-             <div class="lg:hidden" id="menu" role="dialog" aria-modal="true">
-                <!-- Background backdrop, show/hide based on slide-over state. -->
-                <div class="fixed inset-0 z-50"></div>
-                <div
-                    class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                    <div class="flex items-center justify-between">
-                        <a href="#" class="-m-1.5 p-1.5">
-                            <span class="font-bold text-xl">Timefy</span>
-                        </a>
-                        <button id="close" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-900 font-bold text-2xl cursor-pointer">
-                            <span class="sr-only">Close menu</span>
-                            <i class="bi bi-x"></i>
-                        </button>
-                    </div>
-                    <div class="mt-6 flow-root">
-                        <div class="-my-6 divide-y divide-gray-500/10">
-                            <div class="space-y-2 py-6">
-                                <a href="#"
-                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Product</a>
-                                <a href="#"
-                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Features</a>
-                                <a href="#"
-                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Marketplace</a>
-                                <a href="#"
-                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Company</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-        </header>
-    
-        <div class="relative isolate px-6 pt-14 lg:px-8">
-            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-                aria-hidden="true">
-                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
-                </div>
+        <div class="lg:hidden" id="menu" role="dialog" aria-modal="true">
+          <!-- Background backdrop, show/hide based on slide-over state. -->
+          <div class="fixed inset-0 z-50"></div>
+          <div
+            class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+          >
+            <div class="flex items-center justify-between">
+              <a href="index.html" class="-m-1.5 p-1.5">
+                <span class="font-bold text-xl">Timefy</span>
+              </a>
+              <button
+                id="close"
+                type="button"
+                class="-m-2.5 rounded-md p-2.5 text-gray-900 font-bold text-2xl cursor-pointer"
+              >
+                <span class="sr-only">Close menu</span>
+                <i class="bi bi-x"></i>
+              </button>
             </div>
-            <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-                <div class="hidden sm:mb-8 sm:flex sm:justify-center">
-                    <div
-                        class="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                        Announcing our next round of funding. <a href="#" class="font-semibold text-indigo-600"><span
-                                class="absolute inset-0" aria-hidden="true"></span>Read more <span
-                                aria-hidden="true">&rarr;</span></a>
-                    </div>
+            <div class="mt-6 flow-root">
+              <div class="-my-6 divide-y divide-gray-500/10">
+                <div class="space-y-2 py-6">
+                  <a href="index.html"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-indigo-400">Home
+                    Us</a>
+                  <a
+                    href="about.html"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-indigo-400"
+                    >About Us</a
+                  >
+                  <a
+                    href="features.html"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-indigo-400"
+                    >Features</a
+                  >
+                  <a
+                    href="contactus.html"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-indigo-400"
+                    >Contact Us</a
+                  >
+                  <a
+                    href="blog.html"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-indigo-400"
+                    >Blogs</a
+                  >
                 </div>
-                <div class="text-center">
-                    <h1 class="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">Data to enrich
-                        your online business</h1>
-                    <p class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">Anim aute id magna aliqua ad
-                        ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.
-                    </p>
-                    <div class="mt-10 flex items-center justify-center gap-x-6">
-                        <a href="#"
-                            class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
-                            started</a>
-                        <a href="#" class="text-sm/6 font-semibold text-gray-900">Learn more <span
-                                aria-hidden="true">→</span></a>
-                    </div>
-                </div>
+              </div>
             </div>
-            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-                aria-hidden="true">
-                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
-                </div>
-            </div>
+          </div>
         </div>
+      </header>
+      
+      <!--  Hero section  -->
+      <div class="relative isolate px-6 pt-14 lg:px-8">
+        <div
+          class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+          <div
+            class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+            style="
+              clip-path: polygon(
+                74.1% 44.1%,
+                100% 61.6%,
+                97.5% 26.9%,
+                85.5% 0.1%,
+                80.7% 2%,
+                72.5% 32.5%,
+                60.2% 62.4%,
+                52.4% 68.1%,
+                47.5% 58.3%,
+                45.2% 34.5%,
+                27.5% 76.7%,
+                0.1% 64.9%,
+                17.9% 100%,
+                27.6% 76.8%,
+                76.1% 97.7%,
+                74.1% 44.1%
+              );
+            "
+          ></div>
+        </div>
+        <div
+          class="mx-auto max-w-7xl py-20 sm:pt-28 sm:pb-10 lg:pt-30 lg:pb-10 flex flex-col-reverse lg:flex-row items-center lg:items-start"
+        >
+          <!-- Left Section -->
+          <div class="text-center px-3 lg:text-left lg:w-1/2">
+            <h1
+              class="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-6xl"
+            >
+              Take Control of Your Screen <span class="text-indigo-600">Time</span> Today!
+            </h1>
+            <p
+              class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8"
+            >
+              Take control of your digital habits and boost productivity with
+              ease! Download now to reclaim your time and focus on what matters
+              most.
+            </p>
+            <div
+              class="mt-10 flex items-center justify-center lg:justify-start gap-x-6"
+            >
+              <a id="Download"
+                href="#"
+                class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >Download the App</a
+              >
+              <a href="#features" class="text-sm/6 font-semibold text-gray-900"
+                >Learn more <span aria-hidden="true">→</span></a
+              >
+            </div>
+            
+          </div>
+          <!-- Right Section -->
+          <div class="lg:w-1/2 hidden lg:block -mt-16">
+            <!-- animation -->
+                <div class="hero-visual w-3/4 h-auto  mx-auto">
+                  <svg width="456" height="456" viewBox="0 0 456 456" fill="none" xmlns="http://www.w3.org/2000/svg" class="ringee">
+                    <ellipse cx="228" cy="228" rx="185" ry="135" class="ellipse e-1" />
+                    <ellipse cx="228" cy="228" rx="185" ry="135" class="ellipse e-2" />
+                    <ellipse cx="228" cy="228" rx="185" ry="135" class="ellipse e-3" />
+                    <ellipse cx="228" cy="228" rx="185" ry="135" class="ellipse e-4" />
+                    <ellipse cx="228" cy="228" rx="185" ry="135" class="ellipse e-5" />
+                    <ellipse cx="228" cy="228" rx="185" ry="135" class="ellipse e-6" />
+                    <ellipse cx="228" cy="228" rx="185" ry="135" class="ellipse e-7" />
+                    <ellipse cx="228" cy="228" rx="185" ry="135" class="ellipse e-8" />
+                    <ellipse cx="228" cy="228" rx="185" ry="135" class="ellipse e-9" />
+                    <ellipse cx="228" cy="228" rx="185" ry="135" class="ellipse e-10" />
+                    <ellipse cx="228" cy="228" rx="185" ry="135" class="ellipse e-11" />
+                    <ellipse cx="228" cy="228" rx="185" ry="135" class="ellipse e-12" />
+                  </svg>
+                
+                  <div class="hero__center">
+                    <div class="hero__center__appicon-left"></div>
+                    <!-- <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M7.5036 2.46533V6.49634L11.5346 6.49634V7.50409L7.5036 7.50409L7.5036 11.5351H6.49585L6.49585 7.50409H2.46484V6.49634H6.49585V2.46533H7.5036Z"
+                        class="hero__center__plus" />
+                    </svg> -->
+                    <div class="hero__center__appicon-right"></div>
+                  </div>
+                
+                </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div id="features" class="bg-white py-14 sm:py-12 mx-auto max-w-7xl py-20 sm:pt-28 sm:pb-10 lg:pt-30 lg:pb-10 flex flex-col-reverse lg:flex-row items-center lg:items-start">
+        <!-- left section -->
+        <div class="lg:w-1/2 hidden lg:block">
+          <img src="/images/file.png" alt="Screen Time Management" class="w-3/4 h-auto mt-16 mx-auto" />
+        </div>
+        <!-- right section -->
+        <div class="lg:w-1/2 mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="mx-auto max-w-2xl lg:text-center">
+            <!-- <h2 class="text-base/7 font-semibold text-indigo-600">
+              Our Application features
+            </h2> -->
+            <p
+              class="mt-2 text-center text-pretty text-4xl font-semibold tracking-tight sm:text-5xl lg:text-balance text-indigo-600"
+            >
+              Features
+            </p>
+            <p class="mt-6 text-lg/8 text-gray-600">
+            Reclaim your time and boost productivity with our powerful screen time management app. Track, focus, and thrive in a
+            healthier digital lifestyle!
+            </p>
+          </div>
+          <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+            <dl
+              class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16"
+            >
+              <div class="relative pl-16 p-4 ring-1 p-3 rounded-lg">
+                <dt class="text-base/7 font-semibold text-gray-900">
+                  <div
+                    class="absolute left-2 top-2 flex size-10 items-center justify-center rounded-lg bg-indigo-400">
+                    <span class="w-12 h-12 p-2 flex items-center justify-center">
+                    <i class="bi bi-graph-up text-2xl"></i>
+                    </span>
+                  </div>
+                Screen Usage Tracking
+                </dt>
+                <dd class="mt-2 text-base/7 text-gray-600">
+                Monitor your screen habits effortlessly with real-time insights. See your daily totals and a breakdown by apps to stay
+                aware of your digital activities.
+                </dd>
+              </div>
+              <div class="relative pl-16 p-4 ring-1 p-3 rounded-lg">
+                <dt class="text-base/7 font-semibold text-gray-900">
+                  <div
+                    class="absolute left-2 top-2 flex size-10 items-center justify-center rounded-lg bg-indigo-600"
+                  >
+                    <span class="w-12 h-12 p-2 flex items-center justify-center">
+                    <i class="bi bi-calendar-date"></i>
+                    </span>
+                  </div>
+                Screen Time Reminders
+                </dt>
+                <dd class="mt-2 text-base/7 text-gray-600">
+                Set personalized limits and get notified when you've reached them. Stay on track with gentle nudges to manage your
+                screen time effectively.
+                </dd>
+              </div>
+              <div class="relative pl-16 p-4 ring-1 p-3 rounded-lg">
+                <dt class="text-base/7 font-semibold text-gray-900">
+                  <div
+                    class="absolute left-2 top-2 flex size-10 items-center justify-center  rounded-lg bg-indigo-600"
+                  >
+                    <span class="w-12 h-12 p-2 flex items-center justify-center">
+                    <i class="bi bi-bullseye"></i>
+                    </span>
+                  </div>
+                Focus Modes
+                </dt>
+                <dd class="mt-2 text-base/7 text-gray-600">
+                Lock distractions with customizable focus schedules. Take control of your time by limiting app access during work,
+                study, or family time.
+                </dd>
+              </div>
+              <div class="relative pl-16 p-4 ring-1 p-3 rounded-lg">
+                <dt class="text-base/7 font-semibold text-gray-900">
+                  <div
+                    class="absolute left-2 top-2 flex size-10 items-center justify-center rounded-lg bg-indigo-600"
+                  >
+                    <span class="w-12 h-12 p-2 flex items-center justify-center">
+                    <i class="bi bi-lightbulb"></i>
+                    </span>
+                  </div>
+                Activity Suggestions
+                </dt>
+                <dd class="mt-2 text-base/7 text-gray-600">
+                Discover healthier ways to spend your time with tailored recommendations. Engage in activities like exercise, reading,
+                or mindfulness to reclaim your day.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <!-- Newsletter  -->    
+      <div class="relative isolate overflow-hidden py-16 sm:py-24 lg:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
+            <div class="max-w-xl lg:max-w-lg">
+              <h2 class="text-4xl font-semibold tracking-tight text-gray-900">Subscribe to our newsletter</h2>
+              <p class="mt-4 text-lg text-gray-900">
+                Stay updated with the latest news.
+                Receive exclusive tips, offers, and insights directly in your inbox!
+              </p>
+              <div class="mt-6 flex max-w-md gap-x-4">
+                <label for="email-address" class="sr-only">Email address</label>
+                <input id="email-address" name="email" type="email" autocomplete="email" required
+                  class="min-w-0 flex-auto rounded-md border-0 placeholder-gray-900 px-3.5 py-2 shadow-sm ring-1 ring-inset  focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm/6"
+                  placeholder="Enter your email">
+                <button id="subscribe" type="submit"
+                  class="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                  Subscribe
+                </button>
+              </div>
+              <!-- Error span -->
+              <span id="email-error" class="text-sm text-red-500 mt-2 hidden">Invalid email address. Please enter a valid
+                email.</span>
+            </div>
+            <dl class="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2 ">
+              <div class="flex flex-col items-start ring-1 p-3 rounded-lg">
+                <div
+                  class="w-12 h-12 p-2 flex items-center rounded-md bg-indigo-500 justify-center ring-white/10 cursor-pointer">
+                  <i class="bi bi-newspaper text-2xl"></i>
+                </div>
+                <dt class="mt-4 text-base font-semibold text-gray-900">Weekly articles</dt>
+                <dd class="mt-2 text-base/7 text-gray-700">
+                  Discover actionable tips on managing screen time, boosting productivity, and fostering a balanced digital
+                  life. New posts every week to inspire healthier habits!
+                </dd>
+              </div>
+              <div class="flex flex-col items-start ring-1 p-3 rounded-lg">
+                <div
+                  class="w-12 h-12 p-2 flex items-center rounded-md bg-indigo-500 justify-center ring-white/10 cursor-pointer">
+                  <i class="bi bi-graph-down-arrow text-2xl"></i>
+                </div>
+                <dt class="mt-4 text-base font-semibold text-gray-900">Insights and Trends</dt>
+                <dd class="mt-2 text-base/7 text-gray-700">
+                  Gain a deeper understanding of your screen habits with detailed usage graphs. Track weekly and monthly
+                  trends
+                  to make informed adjustments.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+     <!-- Footer -->
+      <footer class="bg-white rounded-lg shadow dark:bg-gray-900">
+        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+          <div class="sm:flex sm:items-center sm:justify-between">
+            <a href="index.html" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+              <span class="self-center text-2xl font-bold whitespace-nowrap dark:text-white">Timefy</span>
+            </a>
+            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+              <li class="px-2 md:px-6">
+                <a href="about.html" class="hover:underline me-4 md:me-6">About</a>
+              </li>
+              <li class="px-2 md:px-6">
+                <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+              </li>
+              <li class="px-2 md:px-6">
+                <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+              </li>
+              <li class="md:px-6 px-2">
+                <a href="contactus.html" class="hover:underline">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+          <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="index.html"
+              class="hover:underline">Timefy™</a>. All Rights Reserved.</span>
+        </div>
+      </footer>
     </div>
-</body>
+  </body>
 </html>
 <script>
-    // JavaScript for Sidebar Toggle
-        const menuButton = document.getElementById('menu');
-        const closeButton = document.getElementById('close');
-        const openButton = document.getElementById('open');
-        const mobileMenu = document.getElementById('menu');
+  //Javascript for email vaildation
+  document.addEventListener("DOMContentLoaded", () => {
+      const emailInput = document.getElementById("email-address");
+      const subscribeButton = document.getElementById("subscribe");
+      const emailError = document.getElementById("email-error");
+      const toastSubscribe = document.getElementById("toast-subscribe"); // Ensure this ID exists in your HTML
+      const entirebody = document.getElementsByClassName("oncemore"); // Ensure elements with this class exist
 
-        openButton.addEventListener('click', () => {
-            mobileMenu.style.display = 'block';
-        });
+      // Email validation regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        closeButton.addEventListener('click', () => {
-            mobileMenu.style.display = 'none';
-        });
+      subscribeButton.addEventListener("click", (e) => {
+        e.preventDefault(); // Prevent form submission for this demo
 
-        // JavaScript for Dark/Light Mode Toggle
-        const modeToggleButton = document.getElementById('mode');
-        modeToggleButton.addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            const iconClass = document.body.classList.contains('dark')
-                ? 'bi-moon-stars'
-                : 'bi-brightness-high';
-            modeToggleButton.className = `bi ${iconClass}`;
-        });
+        // Check if email matches the regex
+        if (!emailRegex.test(emailInput.value)) {
+          emailError.classList.remove("hidden");
+        } else {
+          emailError.classList.add("hidden");
+
+          // Show subscribe toast and blur background
+          toastSubscribe.classList.remove("hidden");
+          toastSubscribe.classList.add("block");
+
+          // Loop through the collection and add the 'blurred' class
+          for (let i = 0; i < entirebody.length; i++) {
+            entirebody[i].classList.add("blurred");
+          }
+        }
+      });
+
+      // Example: Close toast logic (if needed)
+      const closeToast = document.getElementById("closeSubscribe"); // Make sure this ID exists in your HTML
+      closeToast.addEventListener("click", () => {
+        toastSubscribe.classList.add("hidden");
+        toastSubscribe.classList.remove("block");
+
+        // Remove the 'blurred' class from all elements
+        for (let i = 0; i < entirebody.length; i++) {
+          entirebody[i].classList.remove("blurred");
+        }
+      });
+
+      // Remove error when user types in the field again
+      emailInput.addEventListener("input", () => {
+        if (emailRegex.test(emailInput.value)) {
+          emailError.classList.add("hidden");
+        }
+      });
+
+    });
+
+  // JavaScript for Sidebar Toggle
+  const menuButton = document.getElementById("menu");
+  const closeButton = document.getElementById("close");
+  const openButton = document.getElementById("open");
+  const mobileMenu = document.getElementById("menu");
+
+  openButton.addEventListener("click", () => {
+    mobileMenu.style.display = "block";
+  });
+
+  closeButton.addEventListener("click", () => {
+    mobileMenu.style.display = "none";
+  });
+
+  // JavaScript for Dark/Light Mode Toggle
+  const modeToggleButton = document.getElementById("mode");
+  const iconClassElements = document.querySelectorAll(".iconClass"); // Select all elements with the class "iconClass"
+
+  modeToggleButton.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    // Change mode toggle icon
+    const iconClass = document.body.classList.contains("dark")
+      ? "bi-moon-stars"
+      : "bi-brightness-high";
+    modeToggleButton.className = `bi ${iconClass}`;
+
+    // Update iconClass elements with 'text-white' in dark mode
+    iconClassElements.forEach((icon) => {
+      if (document.body.classList.contains("dark")) {
+        icon.classList.add("text-white");
+      } else {
+        icon.classList.remove("text-white");
+      }
+    });
+  });
 </script>

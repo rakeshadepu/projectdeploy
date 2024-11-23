@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timefy - Manage your time, reclaim your focus.</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <meta name="description"
+        content="Take control of your screen time with our app. Manage your time effectively and stay productive." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animate.css">
+</head>
+
+<body>
+    <div class="bg-white oncemore">
+        <header class="fixed inset-x-0 top-0 z-50 border-b border-gray-300 bg-white">
+            <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+                <div class="flex lg:flex-1">
+                    <a href="index.html" class="-m-1.5 p-1.5">
+                        <span class="font-bold text-xl">Timefy</span>
+                    </a>
+                </div>
+                <!-- <div class="flex lg:hidden">
+                        <button type="button"
+                            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-900 cursor-pointer">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                aria-hidden="true" data-slot="icon">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                        </button>
+                    </div> -->
+                <div class="hidden lg:flex lg:gap-x-12">
+                    <a href="index.html" class="text-sm/6 font-semibold text-gray-900">Home</a>
+                    <a href="about.html" class="text-sm/6 font-semibold text-gray-900">About Us</a>
+                    <a href="features.html" class="text-sm/6 font-semibold text-gray-900">Features</a>
+                    <a href="contactus.html" class="text-sm/6 font-semibold text-gray-900">Contact Us</a>
+                    <a href="blog.html" class="text-sm/6 font-semibold text-gray-900">Blogs</a>
+                </div>
+                <div class="lg:flex lg:flex-1 lg:justify-end text-2xl">
+                    <span class="text-sm/6 font-semibold text-2xl text-gray-900 cursor-pointer">
+                        <i class="bi bi-brightness-high" id="mode"></i>
+                    </span>
+                </div>
+                <button id="open" type="button"
+                    class="lg:hidden -m-2.5 rounded-md p-2.5 text-gray-900 font-bold text-2xl cursor-pointer">
+                    <span class="sr-only">Open menu</span>
+                    <i class="bi bi-list text-2xl font-semibold"></i>
+                </button>
+            </nav>
+            <!-- Mobile menu, show/hide based on menu open state. -->
+
+            <div class="lg:hidden" id="menu" role="dialog" aria-modal="true">
+                <!-- Background backdrop, show/hide based on slide-over state. -->
+                <div class="fixed inset-0 z-50"></div>
+                <div
+                    class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                    <div class="flex items-center justify-between">
+                        <a href="index.html" class="-m-1.5 p-1.5">
+                            <span class="font-bold text-xl">Timefy</span>
+                        </a>
+                        <button id="close" type="button"
+                            class="-m-2.5 rounded-md p-2.5 text-gray-900 font-bold text-2xl cursor-pointer">
+                            <span class="sr-only">Close menu</span>
+                            <i class="bi bi-x"></i>
+                        </button>
+                    </div>
+                    <div class="mt-6 flow-root">
+                        <div class="-my-6 divide-y divide-gray-500/10">
+                            <div class="space-y-2 py-6">
+                                <a href="index.html"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-indigo-400">Home
+                                    Us</a>
+                                <a href="about.html"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-indigo-400">About
+                                    Us</a>
+                                <a href="features.html"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-indigo-400">Features</a>
+                                <a href="contactus.html"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-indigo-400">Contact
+                                    Us</a>
+                                <a href="blog.html"
+                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-indigo-400">Blogs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!--  Hero section  -->
+        <div class="py-24 sm:py-32">
+            <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+                <section class="bg-white dark:bg-gray-900">
+                    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+                        <div class="max-w-screen-md mb-8 lg:mb-16">
+                            <h2 class="mb-4 mx-auto text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Features.</h2>
+                            <p class="mx-auto  sm:text-xl text-gray-900">Track and manage your screen usage to improve productivity and maintain a healthier digital balance</p>
+                        </div>
+                        <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0 rin">
+                            <div class="ring-1 p-3 rounded-lg">
+                                <div
+                                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900 ">
+                                    <svg class="w-5 h-5 text-gray-900 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor"
+                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="mb-2 text-xl font-bold text-gray-900">Screen Time Tracking:</h3>
+                                <p class="text-gray-500 dark:text-gray-400">Tracks the total time spent on your device each day. It logs all screen usage, including time on apps and browsing.</p>
+                            </div>
+                            <div class="ring-1 p-3 rounded-lg">
+                                <div
+                                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                    <svg class="w-5 h-5 text-gray-900 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor"
+                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <h3 class="mb-2 text-xl font-bold text-gray-900">App Usage Analytics</h3>
+                                <p class="text-gray-500">Provides detailed analytics on how much time is spent on each app. It categorizes usage by social, entertainment.</p>
+                            </div>
+                            <div class="ring-1 p-3 rounded-lg">
+                                <div
+                                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                    <svg class="w-5 h-5 text-gray-900 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor"
+                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
+                                            clip-rule="evenodd"></path>
+                                        <path
+                                            d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <h3 class="mb-2 text-xl font-bold text-gray-900">Usage Patterns</h3>
+                                <p class="text-gray-500 dark:text-gray-400">Analyzes your screen time and identifies patterns, such as which apps you use the most and at what times.</p>
+                            </div>
+                            <div class="ring-1 p-3 rounded-lg">
+                                <div
+                                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                    <svg class="w-5 h-5 text-gray-900 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor"
+                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z">
+                                        </path>
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="mb-2 text-xl font-bold text-gray-900">Focus Mode</h3>
+                                <p class="text-gray-500 dark:text-gray-400">Suggests periods of time to focus on tasks without distractions from apps.</p>
+                            </div>
+                            <div class="ring-1 p-3 rounded-lg">
+                                <div
+                                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                    <svg class="w-5 h-5 text-gray-900 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor"
+                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <h3 class="mb-2 text-xl font-bold text-gray-900">Usage Alerts</h3>
+                                <p class="text-gray-500 dark:text-gray-400">CSends push notifications when you’ve exceeded a preset amount of time on specific apps.</p>
+                            </div>
+                            <div class="ring-1 p-3 rounded-lg">
+                                <div
+                                    class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                                    <svg class="w-5 h-5 text-gray-900 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor"
+                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="mb-2 text-xl font-bold text-gray-900">Health Suggestions</h3>
+                                <p class="text-gray-500 dark:text-gray-400">Offers recommendations to reduce screen time based on your usage patterns.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                </div>
+            </div>
+        </div>
+       
+
+        <!-- Footer -->
+        <footer class="bg-white rounded-lg shadow dark:bg-gray-900">
+            <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+                <div class="sm:flex sm:items-center sm:justify-between">
+                    <a href="index.html" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                        <span class="self-center text-2xl font-bold whitespace-nowrap dark:text-white">Timefy</span>
+                    </a>
+                    <ul
+                        class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                        <li class="px-2 md:px-6">
+                            <a href="about.html" class="hover:underline me-4 md:me-6">About</a>
+                        </li>
+                        <li class="px-2 md:px-6">
+                            <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                        </li>
+                        <li class="px-2 md:px-6">
+                            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                        </li>
+                        <li class="md:px-6 px-2">
+                            <a href="contactus.html" class="hover:underline">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+                <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="index.html"
+                        class="hover:underline">Timefy™</a>. All Rights Reserved.</span>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
+<script>
+    // JavaScript for Sidebar Toggle
+    const menuButton = document.getElementById('menu');
+    const closeButton = document.getElementById('close');
+    const openButton = document.getElementById('open');
+    const mobileMenu = document.getElementById('menu');
+
+    openButton.addEventListener('click', () => {
+        mobileMenu.style.display = 'block';
+    });
+
+    closeButton.addEventListener('click', () => {
+        mobileMenu.style.display = 'none';
+    });
+
+    // JavaScript for Dark/Light Mode Toggle
+    const modeToggleButton = document.getElementById('mode');
+    const iconClassElements = document.querySelectorAll('.iconClass'); // Select all elements with the class "iconClass"
+
+    modeToggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+
+        // Change mode toggle icon
+        const iconClass = document.body.classList.contains('dark')
+            ? 'bi-moon-stars'
+            : 'bi-brightness-high';
+        modeToggleButton.className = `bi ${iconClass}`;
+
+        // Update iconClass elements with 'text-white' in dark mode
+        iconClassElements.forEach((icon) => {
+            if (document.body.classList.contains('dark')) {
+                icon.classList.add('text-white');
+            } else {
+                icon.classList.remove('text-white');
+            }
+        });
+    });
+</script>

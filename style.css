@@ -1,7 +1,9 @@
 body::-webkit-scrollbar{
     display: none;
 }
-
+body{
+    height: 100%;
+}
 /* Sidebar visibility */
 .lg\:hidden[role="dialog"] {
     display: none;
@@ -52,4 +54,34 @@ a,
 /* Sidebar transition */
 .lg\:hidden[role="dialog"] {
     transition: transform 0.3s ease-in-out;
+}
+
+/* Blur effect */
+.blurred {
+    filter: blur(4px);
+    pointer-events: none;
+}
+
+
+#toast-default,#toast-subscribe,#toast-contact {
+    position: fixed;
+    top: 50%;
+    /* Vertically center */
+    left: 50%;
+    /* Horizontally center */
+    transform: translate(-50%, -50%);
+    /* Offset by 50% of its own size */
+    z-index: 9999;
+    /* Ensure it’s on top */
+    display: none;
+    transition: opacity 0.3s ease-in-out;
+    /* Initially hidden */
+    flex-direction: row;
+    /* Align content in a row (default for flex) */
+}
+
+/* Styling for toast appearance */
+#toast-default.block,#toast-subscribe.block,#toast-contact.block {
+    display: flex;
+    /* Show when active */
 }
